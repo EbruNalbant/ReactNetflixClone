@@ -2,6 +2,9 @@ import axios from "axios";
 import { ActionTypes } from "../../constants/actionTypes";
 import { options } from "../../constants/constants";
 
+// atılan isteklerin başına base url ekleme
+axios.defaults.baseURL = "https://api.themoviedb.org/3";
+
 //aksiyon objesi oluşturan bir fonksiyon
 export const setLoading = (payload) => ({
   type: ActionTypes.SET_LOADING,
@@ -11,10 +14,7 @@ export const setLoading = (payload) => ({
 // API' dan verileri çekme
 export const getMovies = () => {
   return async function (dispatch) {
-    const res = await axios.get(
-      "https://api.themoviedb.org/3/movie/popular",
-      options
-    );
+    const res = await axios.get("/movie/popular", options);
     // gelen veriyi, reducer'a aktarma
     dispatch({
       type: ActionTypes.SET_MOVIES,
@@ -26,7 +26,7 @@ export const getMovies = () => {
 export const getGenres = () => (dispatch) => {
   //kategori verilerini çekme
   axios
-    .get("https://api.themoviedb.org/3/genre/movie/list", options)
+    .get("/genre/movie/list", options)
     .then((res) =>
       // reducer' a aktarma
       dispatch({
