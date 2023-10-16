@@ -3,7 +3,7 @@
 - This application clones specific features of Netflix.
 - Users can view films listed by categories and access detailed information about each film.
 
-### Libraies
+### Libraries
 
 - react
 - @splidejs/react-splide
